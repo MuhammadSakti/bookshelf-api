@@ -192,7 +192,11 @@ const deleteBookByIdHandler = (request, h) => {
     });
     response.code(404);
     return response;
-}
+};
 
-module.exports = {addBookHandler, getAllBooksHandler, 
-    getBookByIdHandler, editBookByIdHandler, deleteBookByIdHandler};
+module.exports = {
+    addBookHandler, 
+    getAllBooksHandler, 
+    getBookByIdHandler, 
+    editBookByIdHandler, 
+    deleteBookByIdHandler};
