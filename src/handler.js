@@ -9,8 +9,7 @@ const addBookHandler = (request, h) => {
         summary, 
         publisher, 
         pageCount, 
-        readPage, 
-        finished, 
+        readPage,  
         reading,
     } = request.payload;
 
@@ -18,22 +17,11 @@ const addBookHandler = (request, h) => {
     const insertedAt = new Date().toISOString();
     const updatedAt = insertedAt;
 
-    finished = pageCount === readPage;
+    const finished = pageCount === readPage;
+    const isReadPageMoreThanPage = readPage > pageCount;
+    const isBookName = request.payload.name;
 
-    const newBook = {
-        name, year, author, 
-        summary, publisher, pageCount, 
-        readPage, finished, reading,
-        id, insertedAt, updatedAt,
-    };
-
-    books.push(newBook);
-
-    const isSuccess = books.filter((book) => book.id === id).length > 0;
-    const isBookName = books.filter((book) => book.name === '');
-    const isReadPageMoreThanPage = books.filter((book) => book.readPage > pageCount);
-
-    if(isBookName) {
+    if(!isBookName) {
         const response = h.response(
             {
                 status: 'fail',
@@ -54,7 +42,17 @@ const addBookHandler = (request, h) => {
         response.code(400);
         return response;
     }
-    
+
+    const newBook = {
+        name, year, author, 
+        summary, publisher, pageCount, 
+        readPage, finished, reading,
+        id, insertedAt, updatedAt,
+    };
+
+    books.push(newBook);
+    const isSuccess = books.filter((book) => book.id === id).length > 0;
+
     if(isSuccess) {
         const response = h.response(
             {
