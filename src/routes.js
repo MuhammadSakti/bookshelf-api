@@ -1,4 +1,4 @@
-const { handler } = require('@hapi/hapi/lib/cors');
+
 const {
     addBookHandler, getAllBooksHandler, 
     getBookByIdHandler, editBookByIdHandler, deleteBookByIdHandler
