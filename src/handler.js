@@ -19,6 +19,7 @@ const addBookHandler = (request, h) => {
 
     const finished = pageCount === readPage;
     const isReadPageMoreThanPage = readPage > pageCount;
+    //ngambil content name terus ngecheck kosong atau tidak;
     const isBookName = request.payload.name;
 
     if(!isBookName) {
