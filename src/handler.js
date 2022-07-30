@@ -106,6 +106,8 @@ const getAllBooksHandler = (request, h) => {
           (book) => new RegExp(name, 'i').test(book.name));
     }
 
+    // ubah array json dengan map
+    // jadi lebih spesifik respon yang ingin dikirim
     books = filteredBooks.map((book) => ({
       id: book.id,
       name: book.name,
